@@ -67,3 +67,10 @@ jobs:
           app-name: 'tech0-gen-8-step3-testapp-py2-20'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_573CE2DFE71A4E2BB581CFD191275614 }}
+
+      - name: Copy artifact for deployment job
+        run: |
+          mkdir deploy
+          cp -r ./.next/standalone/. ./deploy
+          cp -r ./public ./deploy
+          cp -r ./.next/static/. ./deploy/.next/static
